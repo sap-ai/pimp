@@ -1,15 +1,11 @@
 import sys
 import requests
-def download_large_file(url, destination):
-    try:
-        with requests.get(url, stream=True) as response:
-            response.raise_for_status()
-            with open(destination, 'wb') as f:
-                for chunk in response.iter_content(chunk_size=8192):
-                    f.write(chunk)
-        print("Package downloaded successfully!")
-    except requests.exceptions.RequestException as e:
-        print("Error downloading the Package:", e)
+from bs4 import BeautifulSoup
 dest = sys.argv[1]
-package = 'https://github.com/sap-ai/pimpstore/tree/main/' + dest
+package = 'https://github.com/sap-ai/pimpstore/blob/main/' + dest
 download_large_file(package, dest)
+fl = requests.get(url)
+soup = BeautifulSoup(fl, 'html.parser')
+d = soup.find('textarea')
+with open(dest, 'w') as file:
+    file.write(d)
