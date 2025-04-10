@@ -15,10 +15,9 @@ for link in soup.find_all('textarea'):
       s = ''.join(li)
       li = s.split("<")
       s = ''.j(li)
-       try:
-         exec(s)
-         fnl = li[0]
-      except:
-         pass
+      exec(s)
+      fnl = s
+   except:
+      pass
 with open(dest, 'w') as file:
    file.write(str(fnl))
