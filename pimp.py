@@ -7,4 +7,4 @@ fl = requests.get(package)
 soup = BeautifulSoup(fl.content, 'html.parser')
 d = soup.find('textarea')
 with open(dest, 'w') as file:
-    file.write(d)
+    file.write(str(d))
