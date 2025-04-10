@@ -11,5 +11,5 @@ def download_large_file(url, destination):
     except requests.exceptions.RequestException as e:
         print("Error downloading the Package:", e)
 dest = sys.argv[1]
-package = 'https://github.com/sap-ai/pimpstore/' + dest
+package = 'https://github.com/sap-ai/pimpstore/tree/main/' + dest
 download_large_file(package, dest)
